@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 
 public class FileReader {
-
+  // print File
   public static void printFile(Scanner FileReader){
     System.out.println("File content: ");
     while (FileReader.hasNextLine()){
@@ -16,6 +16,7 @@ public class FileReader {
     }
   }
 
+  // count the number of letters
   private static Map<Character, Integer> numberOfDifferentEnglishLetters(Scanner FileReader){
     Map<Character, Integer> frequencyMap = new HashMap<>(26);
 
@@ -57,7 +58,7 @@ public class FileReader {
     System.out.println("Input output file name: ");
     String OutputFileName = scanner.nextLine();
 
-
+    // write results
     try (FileWriter writer = new FileWriter(OutputFileName)){
       for (Map.Entry<Character, Integer> entry : frequencyMap.entrySet()){
         writer.write(entry.getKey() + ": " + entry.getValue() + System.lineSeparator());
