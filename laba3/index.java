@@ -15,27 +15,11 @@ public class index{
 
   
     // Проверка на окончания для мужских отчеств
-    if (
-      (length >= 4 && 
-        patronymic[length - 1] == 'ч' && 
-        patronymic[length - 2] == 'и' &&
-        patronymic[length - 3] == 'в' && 
-        patronymic[length - 4] == 'о') ||
-      (length >= 4 && 
-        patronymic[length - 1] == 'ч' && 
-        patronymic[length - 2] == 'и' &&
-        patronymic[length - 3] == 'в' && 
-        patronymic[length - 4] == 'е')) 
-    {
+    if (length >= 4 && patronymic[length - 1] == 'ч' && patronymic[length - 2] == 'и'){
       return "М";
     }
-  
     // Проверка на окончания для женских отчеств
-    else if (
-        (length >= 4 && patronymic[length - 1] == 'а' && patronymic[length - 2] == 'н' &&
-         patronymic[length - 3] == 'в' && patronymic[length - 4] == 'о') ||
-        (length >= 4 && patronymic[length - 1] == 'а' && patronymic[length - 2] == 'н' &&
-         patronymic[length - 3] == 'в' && patronymic[length - 4] == 'е')) {
+    else if (length >= 4 && patronymic[length - 1] == 'а' && patronymic[length - 2] == 'н') {
       return "Ж";
     }
 
