@@ -8,18 +8,18 @@ import java.util.Scanner;
 
 
 
-public class index{
+public class UserInfoParser{
 
   private static String determineGender(char[] patronymic) {
     int length = patronymic.length;
 
   
     // Проверка на окончания для мужских отчеств
-    if (length >= 4 && patronymic[length - 1] == 'ч' && patronymic[length - 2] == 'и'){
+    if (patronymic[length - 1] == 'ч' && patronymic[length - 2] == 'и'){
       return "М";
     }
     // Проверка на окончания для женских отчеств
-    else if (length >= 4 && patronymic[length - 1] == 'а' && patronymic[length - 2] == 'н') {
+    else if (patronymic[length - 1] == 'а' && patronymic[length - 2] == 'н') {
       return "Ж";
     }
 
