@@ -24,7 +24,7 @@ public class RequestGenerator implements Runnable {
     while (true) { 
         try {
           // imitation of real request system
-          Thread.sleep(random.nextInt(3000) + 1000); // request generation
+          Thread.sleep(random.nextInt(1000) + 500); // request generation
           int floor = random.nextInt(totalFloors);
           int weight = random.nextInt(100) + 50; // weight between 50-149
           manager.addRequest(new Request(floor, weight));

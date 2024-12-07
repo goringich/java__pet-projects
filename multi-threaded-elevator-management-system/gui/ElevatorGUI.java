@@ -90,7 +90,7 @@ public class ElevatorGUI extends JFrame {
       int y = height - (lift.getCurrentFloor() * floorHeight) - floorHeight;
 
       // Print lift position
-      System.out.println("Lift " + lift.getId() + " X: " + x + " Y: " + y);
+      // System.out.println("Lift " + lift.getId() + " X: " + x + " Y: " + y);
 
       JPanel liftBox = new JPanel();
       liftBox.setBounds(x, Math.max(y, 0), liftWidth, floorHeight - 10);
