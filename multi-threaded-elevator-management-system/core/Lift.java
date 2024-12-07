@@ -41,6 +41,10 @@ public class Lift implements Runnable {
     return currentFloor;
   }
 
+  public int getCapacity(){
+    return capacity;
+  }
+
   public int getCurrentLoad(){
     return currentLoad;
   }
