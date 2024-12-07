@@ -1,5 +1,8 @@
 # Elevator System Simulation
 
+![image](https://github.com/user-attachments/assets/6dd7009c-09d1-471f-911c-886415f7d074)
+
+
 ## Overview
 
 This project is a **Java-based simulation** of a multi-elevator management system designed for a building. It efficiently handles multiple elevators, processes real-time requests, and visualizes their operation in a **graphical user interface (GUI)**.
