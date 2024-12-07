@@ -45,4 +45,8 @@ public class ElevatorGUI extends JFrame {
       liftPanel.add(liftInfo);
     }
   }
+
+  public void updateLog(String log) {
+    logArea.setText(log);
+  }
 }

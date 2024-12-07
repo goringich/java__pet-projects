@@ -13,10 +13,10 @@ public class Main {
       RequestGenerator generator = new RequestGenerator(manager, 20); // 20 floors
 
       manager.start(generator);
-      
-      SwingUtilities.invokeLater(() => new ElevatorGUI(manager));
+
+      SwingUtilities.invokeLater(() -> new ElevatorGUI(manager));
     } catch (Exception e) {
       System.err.println("Error initializing the GUI: " + e.getMessage());
     }
   }
-}
+} 
