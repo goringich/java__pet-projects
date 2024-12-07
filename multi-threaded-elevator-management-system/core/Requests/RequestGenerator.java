@@ -1,14 +1,17 @@
 package core.Requests;
 // Realisation of Runnable Interface allows accomplish this task parallel
 
+import java.util.List;
 import java.util.Random;
 
 import core.ElevatorManager;
+import core.Lift;
 
 public class RequestGenerator implements Runnable {
   private final ElevatorManager manager;
   private final int totalFloors;
   private final Random random;
+  private boolean running = true;
 
   public RequestGenerator(ElevatorManager manager, int totalFloors){
     this.manager = manager;
@@ -23,7 +26,7 @@ public class RequestGenerator implements Runnable {
           // imitation of real request system
           Thread.sleep(random.nextInt(3000) + 1000); // request generation
           int floor = random.nextInt(totalFloors);
-          int weight = random.nextInt(100) + 50;
+          int weight = random.nextInt(100) + 50; // weight between 50-149
           manager.addRequest(new Request(floor, weight));
         } catch (InterruptedException e) {
           Thread.currentThread().interrupt();
@@ -32,4 +35,8 @@ public class RequestGenerator implements Runnable {
     }
   }
 
+  // stop generating requests
+  public void stop() {
+    running = false;
+  }
 }

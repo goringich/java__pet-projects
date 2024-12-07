@@ -19,9 +19,11 @@ public class ElevatorManager {
   private final BufferedWriter logWriter;
   private final ExecutorService executor;
   private ElevatorGUI gui;
+  private final int totalFloors;
 
   // each lift get default capacity value at the beginning
-  public ElevatorManager(int liftCount, int liftCapacity) throws IOException {
+  public ElevatorManager(int liftCount, int liftCapacity, int totalFloors) throws IOException {
+    this.totalFloors = totalFloors;
     this.lifts = new ArrayList<>();
     this.log = new StringBuilder();
     String logFileName = "elevators_logs_" + System.currentTimeMillis() + ".txt";
@@ -29,7 +31,7 @@ public class ElevatorManager {
     this.executor = Executors.newFixedThreadPool(liftCount + 1); // thread pool for lifts and request generation;
   
     for (int i = 0; i < liftCount; i++) {
-     lifts.add(new Lift(i+1, liftCapacity, this));   
+     lifts.add(new Lift(i+1, liftCapacity, this, totalFloors));   
     }
   }
 
@@ -40,7 +42,7 @@ public class ElevatorManager {
     System.out.println(message);
     try {
       logWriter.write(message + "\n");
-      // The flush() method clears the buffer by writing its contents to a file.
+      // the flush() method clears the buffer by writing its contents to a file.
       logWriter.flush();
     } catch (IOException e) {
       System.err.println("Ошибка при записи логов: " + e.getMessage());
@@ -51,7 +53,8 @@ public class ElevatorManager {
     }
   }
 
-  // to avoid rac
+  // to avoid race
+  // add a new request and assign to the best lift
   public synchronized void addRequest(Request request){
     Lift bestLift = FindBestLift(request.floor);
     if (bestLift != null) {
@@ -61,6 +64,7 @@ public class ElevatorManager {
     }
   }
 
+  // find the closest operational lift to the requested floor
   private Lift FindBestLift(int floor) {
     return lifts.stream()
       .filter(Lift::isOperational)
@@ -69,11 +73,12 @@ public class ElevatorManager {
   }
 
 
-  // GUI
+  // set the GUI reference
   public void setGUI(ElevatorGUI gui){
     this.gui = gui;
   }
 
+  // start all lift threads and the request generator
   public void start(RequestGenerator generator){
     for (Lift lift : lifts) {
       executor.execute(lift);
@@ -81,6 +86,7 @@ public class ElevatorManager {
     executor.execute(generator);
   }
 
+  // stop all lifts and shutdown executor
   public void stop(){
     for (Lift lift : lifts) {
       lift.stop();
@@ -98,7 +104,15 @@ public class ElevatorManager {
 
   public void updateGUI(){
     if (gui != null) {
-      gui.updateLifts(lifts);
+      gui.updateLifts(lifts, totalFloors);
     }
+  }
+
+  public int getTotalFloors() {
+    return totalFloors;
+  }
+
+  public List<Lift> getLifts() {
+    return lifts;
   }
 }
