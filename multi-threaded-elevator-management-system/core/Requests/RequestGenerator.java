@@ -21,13 +21,17 @@ public class RequestGenerator implements Runnable {
 
   @Override 
   public void run(){
-    while (true) { 
+    while (running) { 
         try {
           // imitation of real request system
           Thread.sleep(random.nextInt(1000) + 500); // request generation
-          int floor = random.nextInt(totalFloors);
-          int weight = random.nextInt(100) + 50; // weight between 50-149
-          manager.addRequest(new Request(floor, weight));
+          int numberOfRequests = random.nextInt(3) + 1;
+
+          for (int i = 0; i < numberOfRequests; i++) {
+            int floor = random.nextInt(totalFloors);
+            int weight = random.nextInt(100) + 50; // weight between 50-149
+            manager.addRequest(new Request(floor, weight));
+         }
         } catch (InterruptedException e) {
           Thread.currentThread().interrupt();
           break;

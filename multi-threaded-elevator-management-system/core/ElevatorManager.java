@@ -35,8 +35,6 @@ public class ElevatorManager {
     }
   }
 
-
-
   public void log(String message){
     log.append(message).append("\n");
     System.out.println(message);
@@ -79,11 +77,13 @@ public class ElevatorManager {
   }
 
   // start all lift threads and the request generator
-  public void start(RequestGenerator generator){
+  public void start(RequestGenerator... generators){
     for (Lift lift : lifts) {
       executor.execute(lift);
     }
-    executor.execute(generator);
+    for (RequestGenerator generator : generators) {
+      executor.execute(generator);
+    }
   }
 
   // stop all lifts and shutdown executor
