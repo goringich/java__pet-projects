@@ -4,6 +4,6 @@
 *.class
 *.txt
 *.ini
-Lectures
-multi-threaded-elevator-management-system/AllInOne.java
 *.pdf
+Lectures
+*multi-threaded-elevator-management-system/AllInOne.java
