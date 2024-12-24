@@ -12,17 +12,17 @@ This repository contains a collection of my pet projects developed in Java. Each
 
 ## List of Projects
 
-### 1. **API Fetcher**
+### 1. **Multi-Threaded Elevator Management System**
+   - **Description**: A simulation of an elevator system utilizing multi-threading for efficient management.
+   - **Link**: [View Project](./multi-threaded-elevator-management-system/README.md)
+
+### 2. **API Fetcher**
    - **Description**: A tool designed to retrieve and process data from various APIs.
    - **Link**: [View Project](./api-fetcher/README.md)
 
-### 2. **Complex Matrix Operations**
+### 3. **Complex Matrix Operations**
    - **Description**: An application that performs advanced operations on complex matrices.
    - **Link**: [View Project](./complex-matrix-operations/README.md)
-
-### 3. **Multi-Threaded Elevator Management System**
-   - **Description**: A simulation of an elevator system utilizing multi-threading for efficient management.
-   - **Link**: [View Project](./multi-threaded-elevator-management-system/README.md)
 
 ### 4. **Text Analysis**
    - **Description**: A program that analyzes text data to extract meaningful insights.
